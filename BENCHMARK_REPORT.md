@@ -1,6 +1,6 @@
 # VexelQuant Research: Quantized SLM Inference & Schema Evaluation
 
-> **Generated:** `2026-11-01 11:02:19 UTC`  
+> **Generated:** `2026-11-01 11:45:10 UTC`  
 > **Harness Version:** `vexel-eval-harness v0.1.0`  
 > **Evaluator:** VexelQuant Research Systems Team ([vexelquant.me](https://vexelquant.me))  
 > **Benchmark Track:** `CatalystSignalSchema` (`15` test payloads)  
@@ -13,9 +13,9 @@ This deterministic evaluation benchmarks low-latency, quantized Small Language M
 
 | Architecture / Model | Schema Compliant | Raw JSON Rate | TTFT p50 (ms) | TTFT p95 (ms) | End-to-End p50 (ms) | End-to-End p95 (ms) | Field Accuracy |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **vexel-qwen-2.5-1.5b-q4_k_m** | **100.0%** | 100.0% | `19.8ms` | `22.9ms` | `31.5ms` | `37.2ms` | **100.0%** |
-| **Base Qwen2.5-1.5B-Instruct** | **73.3%** | 20.0% | `49.4ms` | `60.5ms` | `109.8ms` | `133.1ms` | **100.0%** |
-| **Frontier GPT-4o (Cloud API)** | **100.0%** | 80.0% | `538.7ms` | `665.2ms` | `1084.4ms` | `1234.1ms` | **100.0%** |
+| **vexel-qwen-2.5-1.5b-q4_k_m** | **100.0%** | 100.0% | `19.2ms` | `24.6ms` | `31.2ms` | `38.1ms` | **100.0%** |
+| **Base Qwen2.5-1.5B-Instruct** | **80.0%** | 26.7% | `49.6ms` | `54.2ms` | `115.4ms` | `132.8ms` | **100.0%** |
+| **Frontier GPT-4o (Cloud API)** | **100.0%** | 86.7% | `555.0ms` | `725.4ms` | `1084.3ms` | `1246.6ms` | **100.0%** |
 
 ---
 
@@ -27,9 +27,9 @@ In high-frequency and arbitrage execution (e.g. Polymarket CLOB, Solana Jupiter 
 +-----------------------------------------------------------------------------------------+
 | LATENCY COMPARISON: TTFT vs TOTAL INFERENCE (p50 / p95 in milliseconds)                 |
 +-----------------------------------------------------------------------------------------+
-| vexel-qwen-2.5-1.5b-q4_k_m     | TTFT:   19.8ms | Total:   31.5ms | #                                        |
-| Base Qwen2.5-1.5B-Instruct     | TTFT:   49.4ms | Total:  109.8ms | ####                                     |
-| Frontier GPT-4o (Cloud API)    | TTFT:  538.7ms | Total: 1084.4ms | ######################################## |
+| vexel-qwen-2.5-1.5b-q4_k_m     | TTFT:   19.2ms | Total:   31.2ms | #                                        |
+| Base Qwen2.5-1.5B-Instruct     | TTFT:   49.6ms | Total:  115.4ms | ####                                     |
+| Frontier GPT-4o (Cloud API)    | TTFT:  555.0ms | Total: 1084.3ms | ######################################## |
 +-----------------------------------------------------------------------------------------+
 ```
 
@@ -37,9 +37,9 @@ In high-frequency and arbitrage execution (e.g. Polymarket CLOB, Solana Jupiter 
 
 | Model | TTFT p50 | TTFT p95 | TTFT p99 | Total Latency p50 | Total Latency p95 | Total Latency p99 | Throughput |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| `vexel-qwen-2.5-1.5b-q4_k_m` | 19.83 ms | 22.90 ms | 23.29 ms | 31.46 ms | 37.15 ms | 38.57 ms | 1002.4 tok/s |
-| `Base Qwen2.5-1.5B-Instruct` | 49.41 ms | 60.49 ms | 62.50 ms | 109.84 ms | 133.14 ms | 138.11 ms | 586.2 tok/s |
-| `Frontier GPT-4o (Cloud API)` | 538.74 ms | 665.21 ms | 687.04 ms | 1084.38 ms | 1234.09 ms | 1239.43 ms | 53.2 tok/s |
+| `vexel-qwen-2.5-1.5b-q4_k_m` | 19.21 ms | 24.61 ms | 26.02 ms | 31.25 ms | 38.14 ms | 39.53 ms | 1041.4 tok/s |
+| `Base Qwen2.5-1.5B-Instruct` | 49.61 ms | 54.17 ms | 56.72 ms | 115.35 ms | 132.77 ms | 138.78 ms | 669.9 tok/s |
+| `Frontier GPT-4o (Cloud API)` | 555.03 ms | 725.36 ms | 751.82 ms | 1084.32 ms | 1246.62 ms | 1289.70 ms | 47.8 tok/s |
 
 ---
 

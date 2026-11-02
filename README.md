@@ -1,6 +1,6 @@
 # vexel-eval-harness
 
-[![PyPI version](https://img.shields.io/badge/pypi-v0.1.0-blue.svg)](https://pypi.org/project/vexel-eval-harness/)
+[![GitHub Release](https://img.shields.io/badge/release-v0.1.0-blue.svg)](https://github.com/VexelQuant/vexel-eval-harness)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-brightgreen.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![HuggingFace Models](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-VexelQuant-ffcc00)](https://huggingface.co/VexelQuant)
@@ -124,14 +124,27 @@ class DeFiSwapIntentSchema(BaseModel):
 
 ## 4. Installation
 
-Install via `uv` (recommended) or `pip`:
+Install directly from GitHub or build from source:
 
+### Direct GitHub Install
 ```bash
-# Using uv
-uv pip install -e .
+# Using pip
+pip install git+https://github.com/VexelQuant/vexel-eval-harness.git
 
-# Or using standard pip
+# Or using uv
+uv pip install git+https://github.com/VexelQuant/vexel-eval-harness.git
+```
+
+### From Source (Editable Development)
+```bash
+git clone https://github.com/VexelQuant/vexel-eval-harness.git
+cd vexel-eval-harness
+
+# Using pip
 pip install -e .
+
+# Or using uv
+uv pip install -e .
 ```
 
 ---

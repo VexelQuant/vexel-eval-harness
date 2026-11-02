@@ -1,6 +1,6 @@
 # VexelQuant Research: Quantized SLM Inference & Schema Evaluation
 
-> **Generated:** `2026-11-01 11:45:10 UTC`  
+> **Generated:** `2026-11-02 11:19:14 UTC`  
 > **Harness Version:** `vexel-eval-harness v0.1.0`  
 > **Evaluator:** VexelQuant Research Systems Team ([vexelquant.me](https://vexelquant.me))  
 > **Benchmark Track:** `CatalystSignalSchema` (`15` test payloads)  
@@ -13,9 +13,9 @@ This deterministic evaluation benchmarks low-latency, quantized Small Language M
 
 | Architecture / Model | Schema Compliant | Raw JSON Rate | TTFT p50 (ms) | TTFT p95 (ms) | End-to-End p50 (ms) | End-to-End p95 (ms) | Field Accuracy |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **vexel-qwen-2.5-1.5b-q4_k_m** | **100.0%** | 100.0% | `19.2ms` | `24.6ms` | `31.2ms` | `38.1ms` | **100.0%** |
-| **Base Qwen2.5-1.5B-Instruct** | **80.0%** | 26.7% | `49.6ms` | `54.2ms` | `115.4ms` | `132.8ms` | **100.0%** |
-| **Frontier GPT-4o (Cloud API)** | **100.0%** | 86.7% | `555.0ms` | `725.4ms` | `1084.3ms` | `1246.6ms` | **100.0%** |
+| **vexel-qwen-2.5-1.5b-q4_k_m** | **100.0%** | 100.0% | `27.6ms` | `55.8ms` | `53.1ms` | `74.6ms` | **91.1%** |
+| **Base Qwen2.5-1.5B-Instruct** | **100.0%** | 40.0% | `46.3ms` | `56.2ms` | `82.9ms` | `101.3ms` | **91.1%** |
+| **Frontier GPT-4o (Cloud API)** | **100.0%** | 100.0% | `109.4ms` | `116.2ms` | `172.9ms` | `180.2ms` | **91.1%** |
 
 ---
 
@@ -27,9 +27,9 @@ In high-frequency and arbitrage execution (e.g. Polymarket CLOB, Solana Jupiter 
 +-----------------------------------------------------------------------------------------+
 | LATENCY COMPARISON: TTFT vs TOTAL INFERENCE (p50 / p95 in milliseconds)                 |
 +-----------------------------------------------------------------------------------------+
-| vexel-qwen-2.5-1.5b-q4_k_m     | TTFT:   19.2ms | Total:   31.2ms | #                                        |
-| Base Qwen2.5-1.5B-Instruct     | TTFT:   49.6ms | Total:  115.4ms | ####                                     |
-| Frontier GPT-4o (Cloud API)    | TTFT:  555.0ms | Total: 1084.3ms | ######################################## |
+| vexel-qwen-2.5-1.5b-q4_k_m     | TTFT:   27.6ms | Total:   53.1ms | ##                                       |
+| Base Qwen2.5-1.5B-Instruct     | TTFT:   46.3ms | Total:   82.9ms | ###                                      |
+| Frontier GPT-4o (Cloud API)    | TTFT:  109.4ms | Total:  172.9ms | ######                                   |
 +-----------------------------------------------------------------------------------------+
 ```
 
@@ -37,9 +37,9 @@ In high-frequency and arbitrage execution (e.g. Polymarket CLOB, Solana Jupiter 
 
 | Model | TTFT p50 | TTFT p95 | TTFT p99 | Total Latency p50 | Total Latency p95 | Total Latency p99 | Throughput |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| `vexel-qwen-2.5-1.5b-q4_k_m` | 19.21 ms | 24.61 ms | 26.02 ms | 31.25 ms | 38.14 ms | 39.53 ms | 1041.4 tok/s |
-| `Base Qwen2.5-1.5B-Instruct` | 49.61 ms | 54.17 ms | 56.72 ms | 115.35 ms | 132.77 ms | 138.78 ms | 669.9 tok/s |
-| `Frontier GPT-4o (Cloud API)` | 555.03 ms | 725.36 ms | 751.82 ms | 1084.32 ms | 1246.62 ms | 1289.70 ms | 47.8 tok/s |
+| `vexel-qwen-2.5-1.5b-q4_k_m` | 27.57 ms | 55.83 ms | 89.62 ms | 53.11 ms | 74.63 ms | 108.34 ms | 126.8 tok/s |
+| `Base Qwen2.5-1.5B-Instruct` | 46.31 ms | 56.22 ms | 64.85 ms | 82.89 ms | 101.27 ms | 102.19 ms | 80.4 tok/s |
+| `Frontier GPT-4o (Cloud API)` | 109.44 ms | 116.23 ms | 117.98 ms | 172.89 ms | 180.18 ms | 180.79 ms | 40.0 tok/s |
 
 ---
 
@@ -49,11 +49,11 @@ Deterministic extraction measures exact enum classification, asset symbol normal
 
 | Field Name | Type / Requirement | Accuracy Rate | Status |
 | :--- | :--- | :---: | :---: |
-| `catalyst_type` | Deterministic match / bounded tolerance | **100.0%** | `PASS` |
-| `confidence` | Deterministic match / bounded tolerance | **100.0%** | `PASS` |
-| `direction_bias` | Deterministic match / bounded tolerance | **100.0%** | `PASS` |
-| `reasoning_60char_max` | Deterministic match / bounded tolerance | **100.0%** | `PASS` |
-| `ticker` | Deterministic match / bounded tolerance | **100.0%** | `PASS` |
+| `catalyst_type` | Deterministic match / bounded tolerance | **86.7%** | `REVIEW` |
+| `confidence` | Deterministic match / bounded tolerance | **93.3%** | `PASS` |
+| `direction_bias` | Deterministic match / bounded tolerance | **93.3%** | `PASS` |
+| `reasoning_60char_max` | Deterministic match / bounded tolerance | **86.7%** | `REVIEW` |
+| `ticker` | Deterministic match / bounded tolerance | **86.7%** | `REVIEW` |
 | `urgency_score` | Deterministic match / bounded tolerance | **100.0%** | `PASS` |
 
 ---

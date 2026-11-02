@@ -197,6 +197,7 @@ class BenchmarkRunner:
         client: httpx.AsyncClient,
         sample: BenchmarkSample,
         schema_cls: Type[BaseModel],
+        model_name: Optional[str] = None,
     ) -> Tuple[str, float, float, int]:
         """Execute streaming request to accurately capture TTFT and total latency.
 
@@ -210,8 +211,9 @@ class BenchmarkRunner:
         if self.api_key:
             headers["Authorization"] = f"Bearer {self.api_key}"
 
+        target_model = model_name or self.model_name
         payload = {
-            "model": self.model_name,
+            "model": target_model,
             "messages": [
                 {"role": "system", "content": system_instruction},
                 {"role": "user", "content": sample.input_text},
@@ -234,8 +236,10 @@ class BenchmarkRunner:
             resp.raise_for_status()
             async for line in resp.aiter_lines():
                 line = line.strip()
-                if not line or line == "data: [DONE]":
+                if not line:
                     continue
+                if line == "data: [DONE]":
+                    break
                 if line.startswith("data: "):
                     raw_data = line[len("data: ") :]
                     try:
@@ -327,6 +331,7 @@ class BenchmarkRunner:
         sample: BenchmarkSample,
         schema_cls: Type[BaseModel],
         profile: str = "vexel-fine-tuned",
+        model_name: Optional[str] = None,
     ) -> SampleResult:
         """Run inference on one sample, parse, validate, and evaluate field accuracy."""
         if self.simulate or client is None:
@@ -336,7 +341,7 @@ class BenchmarkRunner:
         else:
             try:
                 raw_text, ttft_ms, total_ms, token_count = await self._query_model_stream(
-                    client, sample, schema_cls
+                    client, sample, schema_cls, model_name=model_name
                 )
             except Exception as e:
                 return SampleResult(
@@ -522,7 +527,7 @@ class BenchmarkRunner:
         ) -> SampleResult:
             async with sem:
                 return await self.run_single_sample(
-                    client=client, sample=s, schema_cls=schema_cls, profile=profile
+                    client=client, sample=s, schema_cls=schema_cls, profile=profile, model_name=effective_model
                 )
 
         results: List[SampleResult] = []
